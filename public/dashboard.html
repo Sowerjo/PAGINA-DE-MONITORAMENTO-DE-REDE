@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - Monitoramento de Rede</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Bootstrap para alguns componentes (opcional) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Interact.js para drag and drop -->
+    <script src="https://cdn.jsdelivr.net/npm/interactjs/dist/interact.min.js"></script>
+</head>
+<body>
+    <div class="container dashboard-container">
+        <header class="dashboard-header">
+            <h2>Bem-vindo, <span id="userName"></span>!</h2>
+            <div>
+                <button id="toggleDeviceForm" class="btn-add-device">Adicionar Dispositivo</button>
+                <button id="settingsBtn" class="btn-settings">⚙️ Configurações</button>
+                <button id="fullscreenBtn" class="btn-fullscreen">Fullscreen</button>
+                <a class="btn-logout" href="/logout">Sair</a>
+            </div>
+        </header>
+        <hr>
+        
+        <!-- Formulário para adicionar dispositivo (inicialmente oculto) -->
+        <div id="deviceFormContainer" class="device-form-container" style="display: none;">
+            <form id="deviceForm" enctype="multipart/form-data">
+                <h3>Adicionar Dispositivo</h3>
+                <div class="form-group">
+                    <label for="nome">Nome do Dispositivo:</label>
+                    <input type="text" name="nome" id="nome" required>
+                </div>
+                <div class="form-group">
+                    <label for="ip">IP do Dispositivo:</label>
+                    <input type="text" name="ip" id="ip" required placeholder="ex: 192.168.0.1">
+                </div>
+                <div class="form-group">
+                    <label for="intervalo">Intervalo de Ping (segundos):</label>
+                    <input type="number" name="intervalo" id="intervalo" required value="5">
+                </div>
+                <div class="form-group">
+                    <label for="icone">Ícone do Dispositivo:</label>
+                    <input type="file" name="icone" id="icone" accept="image/*">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Adicionar</button>
+                    <button type="button" id="closeDeviceForm" class="btn-cancel">Cancelar</button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Formulário para editar dispositivo (inicialmente oculto) -->
+        <div id="editDeviceFormContainer" class="device-form-container" style="display: none;">
+            <form id="editDeviceForm" enctype="multipart/form-data">
+                <h3>Editar Dispositivo</h3>
+                <input type="hidden" id="editDeviceId">
+                <div class="form-group">
+                    <label for="editNome">Nome do Dispositivo:</label>
+                    <input type="text" name="nome" id="editNome" required>
+                </div>
+                <div class="form-group">
+                    <label for="editIp">IP do Dispositivo:</label>
+                    <input type="text" name="ip" id="editIp" required placeholder="ex: 192.168.0.1">
+                </div>
+                <div class="form-group">
+                    <label for="editIntervalo">Intervalo de Ping (segundos):</label>
+                    <input type="number" name="intervalo" id="editIntervalo" required value="5">
+                </div>
+                <div class="form-group">
+                    <label for="editIcone">Ícone do Dispositivo (opcional):</label>
+                    <input type="file" name="icone" id="editIcone" accept="image/*">
+                </div>
+                <div class="form-group">
+                    <label for="editAlarm">Alarme Ativado:</label>
+                    <select id="editAlarm" name="alarm_enabled">
+                        <option value="1">Sim</option>
+                        <option value="0">Não</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editOffsetX">Posição Horizontal do Ícone (px):</label>
+                    <input type="number" name="icon_offset_x" id="editOffsetX" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="editOffsetY">Posição Vertical do Ícone (px):</label>
+                    <input type="number" name="icon_offset_y" id="editOffsetY" value="0">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-submit">Salvar</button>
+                    <button type="button" id="closeEditDeviceForm" class="btn-cancel">Cancelar</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Painel de configurações (inicialmente oculto) -->
+        <div id="settingsPanel" class="settings-panel" style="display: none;">
+            <label for="autoUpdateInterval">Intervalo de Atualização (segundos):</label>
+            <input type="number" id="autoUpdateInterval" value="10" min="1">
+            <br>
+            <label for="monitoringPanelScale">Tamanho do campo de dispositivos (%):</label>
+            <input type="number" id="monitoringPanelScale" value="100" min="0" max="300">
+            <button id="saveSettingsBtn">Salvar</button>
+        </div>
+
+        <hr>
+        <h3>Dispositivos Monitorados</h3>
+        <div id="monitoring-panel" class="monitoring-panel">
+            <!-- Os ícones e nomes dos dispositivos serão inseridos aqui -->
+        </div>
+    </div>
+    
+    <!-- Elemento de áudio para alarme -->
+    <audio id="alarmAudio" src="alarm.mp3" preload="auto"></audio>
+    
+    <script src="js/main.js"></script>
+</body>
+</html>

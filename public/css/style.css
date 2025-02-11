@@ -1,0 +1,211 @@
+/* Tema Futurista - Dark Mode */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #1f1c2c, #928dab);
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container do dashboard (apenas para o dashboard de dispositivos) */
+.container.dashboard-container {
+    max-width: 1120px !important;
+    width: 1120px !important;
+    margin: 40px auto;
+}
+
+/* Cabeçalho do dashboard */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botões no header */
+.btn-logout {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.btn-add-device,
+.btn-settings,
+.btn-fullscreen {
+    background: #00bfff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Container para formulários (adição/edição) */
+.device-form-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* Painel de configurações */
+.settings-panel {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 10px;
+}
+.settings-panel label {
+    color: #fff;
+    margin-right: 5px;
+}
+.settings-panel input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+.settings-panel button {
+    background: #00bfff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilo para os títulos */
+h2, h3 {
+    color: #fff;
+}
+
+/* Estilo para os formulários */
+.form-group {
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="file"],
+select {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+
+.btn-submit {
+    background: #00bfff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-cancel {
+    background: #ff4d4d;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Painel de monitoramento – altura padrão de 700px */
+.monitoring-panel {
+    position: relative;
+    width: 100%;
+    height: 700px;
+    border: 2px dashed rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    overflow: auto;
+}
+
+/* Estilo para os dispositivos */
+.device-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: move;
+    border: 3px solid #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px;
+    text-align: center;
+    position: relative;
+}
+
+/* Ajuste para a imagem do ícone: ocupar todo o espaço com formato circular */
+.device-icon img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nome do dispositivo */
+.device-name {
+    font-size: 12px;
+    margin-top: 4px;
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* Botão de deletar dispositivo */
+.btn-delete {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ff4d4d;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    outline: none;
+}
+
+/* Opções adicionais (editar e toggle alarme) – exibidas fora do ícone */
+.device-options {
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 5px;
+    padding: 2px 5px;
+    gap: 5px;
+    white-space: nowrap;
+    z-index: 10;
+}
+.device-icon:hover .device-options {
+    display: flex;
+}
+
+/* Botões para editar e alternar alarme */
+.btn-edit, .btn-toggle-alarm {
+    background: #00bfff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 2px 5px;
+    font-size: 10px;
+    cursor: pointer;
+}
